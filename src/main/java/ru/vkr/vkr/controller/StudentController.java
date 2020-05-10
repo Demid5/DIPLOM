@@ -1,9 +1,9 @@
+/*
 package ru.vkr.vkr.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.vkr.vkr.contest.Test;
 
 import java.util.List;
 
@@ -21,3 +21,4 @@ public class StudentController {
         return "gen";
     }
 }
+*/

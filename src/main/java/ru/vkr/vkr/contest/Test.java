@@ -1,3 +1,4 @@
+/*
 package ru.vkr.vkr.contest;
 
 import edu.csus.ecs.pc2.api.IClient;
@@ -82,3 +83,4 @@ public class Test {
         }
     }
 }
+*/
