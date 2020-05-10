@@ -37,7 +37,32 @@ $(document).ready(function () {
             }
         })
     });
-})
+});
+
+
+function editFioTeacher (idTeacher, stringFIO) {
+     $.ajax({
+         type: 'post',
+         url: "/admin/editTeacher/",
+         data: {'fio': stringFIO, 'idTeacher': idTeacher},
+         dataType: "html",
+         success: function (data) {
+             console.log("фио было успешно изменено " + data);
+         }
+     });
+ }
+
+ function editFioStudent (idStudent, stringFIO) {
+     $.ajax({
+         type: 'post',
+         url: "/teacher/editStudent/",
+         data: {'fio': stringFIO, 'idStudent': idStudent},
+         dataType: "html",
+         success: function (data) {
+             console.log("фио было успешно изменено " + data);
+         }
+     });
+ }
 
 $(".myButtonFio").click(function (e) {
     var editBtn = $(this);                              //Кнопка с редактированием
@@ -57,17 +82,16 @@ $(".myButtonFio").click(function (e) {
             invalidDiv.show(200);
         } else {
             invalidDiv.hide();
-            var idTeacher = itemDivTeach.attr("id").split('_')[1];
+            var idUser = itemDivTeach.attr("id").split('_')[1];
+            var whoIs = itemDivTeach.attr("id").split('_')[0];
 
-            $.ajax({
-                type: 'post',
-                url: "/admin/editTeacher/",
-                data: {'fio': stringFIO, 'idTeacher': idTeacher},
-                dataType: "html",
-                success: function (data) {
-                    console.log("фио было успешно изменено " + data);
-                }
-            });
+            //чтобы определить, кого изменять, преподавателя или студента
+            if (whoIs == 'student') {
+                editFioStudent(idUser, stringFIO);
+            } else if (whoIs == 'teacher') {
+                editFioTeacher(idUser, stringFIO);
+            }
+
 
             textFIO.html('<i class="fa fa-user" aria-hidden="true"></i>&nbsp;' + stringFIO);
 
@@ -90,24 +114,27 @@ $(".myButtonFio").click(function (e) {
         itemDivTeach.addClass("editable-div-item");
     }
 
-    e.preventDefault();
+     e.preventDefault();
 });
+
+
+
 
 //todo: такая себе валидация, надо будет сделать нормальную
 //Копипаст с документации bootstrap для валидации
 //https://getbootstrap.com/docs/4.0/components/forms/
 // Example starter JavaScript for disabling form submissions if there are invalid fields
-window.addEventListener('load', function() {
+  window.addEventListener('load', function() {
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     var forms = document.getElementsByClassName('needs-validation');
     // Loop over them and prevent submission
     var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-        }, false);
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
     });
-}, false);
+  }, false);
