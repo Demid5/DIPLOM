@@ -11,3 +11,10 @@ addons:
       - oracle-java9-installer
 before_install:
   - chmod +x mvnw
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: "1cfbdb5f-83a5-4e49-b165-1ad1a15554a0"
+      app: test-app-search
+  on: dev
