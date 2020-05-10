@@ -6,10 +6,7 @@ import edu.csus.ecs.pc2.api.ITeam;
 import edu.csus.ecs.pc2.api.ServerConnection;
 import edu.csus.ecs.pc2.api.exceptions.LoginFailureException;
 import edu.csus.ecs.pc2.api.exceptions.NotLoggedInException;
-import edu.csus.ecs.pc2.api.implementation.Contest;
-import edu.csus.ecs.pc2.core.model.Account;
 import edu.csus.ecs.pc2.core.model.ClientType;
-import edu.csus.ecs.pc2.exports.ccs.Teamdata;
 
 import java.util.ArrayList;
 import java.util.List;

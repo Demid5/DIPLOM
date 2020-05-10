@@ -1,22 +1,15 @@
 package ru.vkr.vkr.service;
 
-import edu.csus.ecs.pc2.ui.EditGroupFrame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import ru.vkr.vkr.entity.Course;
 import ru.vkr.vkr.entity.Group;
-import ru.vkr.vkr.entity.Teacher;
-import ru.vkr.vkr.entity.User;
 import ru.vkr.vkr.facade.AuthenticationFacade;
-import ru.vkr.vkr.form.SubscriptionForm;
 import ru.vkr.vkr.repository.CourseRepository;
 import ru.vkr.vkr.repository.GroupRepository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.Collection;
 
 @Service
